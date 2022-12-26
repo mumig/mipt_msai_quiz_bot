@@ -1,10 +1,11 @@
 import telebot
 from telebot import types
 import requests
+import config
 from db import UserScore, Questions, CustomPath, delete_old_questions, update_user_score, get_last_info, update_last_info
 
 # define bot
-bot = telebot.TeleBot('5854480723:AAEPm8mmQmDKRQeX3GOlkUj2hQWxYpVgx-I')
+bot = telebot.TeleBot(config.TOKEN)
 
 instruction =  """When you start, bot sends you a message with three question categories. 
 \nYou can choose one of them, then bot sends you a question.
