@@ -36,7 +36,7 @@ def choose_category(message):
         ids.append(q_id)
         Questions.create(question=question, answer=answer, price=price, category=category, user_id=message.from_user.id, q_id=q_id)
 
-    inl_markup = types.InlineKeyboardMarkup(row_width=3)
+    inl_markup = types.InlineKeyboardMarkup(row_width=1)
     inl_item1= types.InlineKeyboardButton(categories[0], callback_data=('question_'+str(ids[0])))
     inl_item2= types.InlineKeyboardButton(categories[1], callback_data=('question_'+str(ids[1])))
     inl_item3= types.InlineKeyboardButton(categories[2], callback_data=('question_'+str(ids[2])))
@@ -68,7 +68,7 @@ def send_welcome(message):
     bot.send_message(chat_id=message.chat.id, text=hello_text, reply_markup=rep_markup)
 
     inl_markup = types.InlineKeyboardMarkup(row_width=1)
-    instruction_text = 'Rules are very simple! Just start the game ;) \nBut if you want to see the unstruiction - click the button below, or write the \help command'
+    instruction_text = 'Rules are very simple! Just start the game ;) \nBut if you want to see the unstruiction - click the button below. Also, you always can text command /help for help :)'
     inl_item= types.InlineKeyboardButton('Instruction', callback_data=('instruction'))
     inl_markup.add(inl_item)
     bot.send_message(message.chat.id, instruction_text, reply_markup=inl_markup)
@@ -105,7 +105,7 @@ def lalala(message):
         bot.send_message(chat_id=message.chat.id, text='Your final score: ' + str(score) + ' points!', reply_markup=rep_markup)
 
     else:
-        bot.send_message(chat_id=message.chat.id, text='Sorry, I do not know this command. You can write \help to see the instruction.')
+        bot.send_message(chat_id=message.chat.id, text='Sorry, I do not know this command. You can write /help for help.')
 
 # callback handler
 @bot.callback_query_handler(func=lambda call:True)
